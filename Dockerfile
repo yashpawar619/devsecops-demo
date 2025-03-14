@@ -1,5 +1,6 @@
 # Build stage
-FROM node:20-alpine AS build
+FROM nginx:alpine as build
+RUN apk update && apk upgrade libxml2 --repository=http://dl-cdn.alpinelinux.org/alpine/v3.21/main
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
